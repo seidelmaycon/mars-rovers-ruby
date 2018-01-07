@@ -8,6 +8,11 @@ module Navigation
   class DirectionNotFound < StandardError; end
 
   def self.turns_to(direction)
+    raise DirectionNotFound unless %w(N E W S).include?(direction)
+    { 'N' => NORTH,
+      'E' => EAST,
+      'W' => WEST,
+      'S' => SOUTH }[direction]
   end
 
   NORTH = North.new
